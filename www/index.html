@@ -125,12 +125,12 @@
             }
           });
         }
-//          url: 'js/announcements.json',
         var myData = {page: 1, subscriptions: "0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16"}
+//          url: 'http://10.10.90.45:5000/announcements', 
+//          data: myData,
         $.ajax({
-          url: 'http://10.10.90.45:5000/announcements',
+          url: 'js/announcements.json',
           type: 'get',
-          data: myData,
           dataType: 'json',
           error: function (data) {
           },
@@ -171,10 +171,10 @@
 
 
 
-//          url: 'js/feeds.json',
+//          url: 'http://10.10.90.45:5000/settings',
       function getFeedsTitles() {
         $.ajax({
-          url: 'http://10.10.90.45:5000/settings',
+          url: 'js/feeds.json',
           type: 'get',
           dataType: 'json',
           error: function (data) {
