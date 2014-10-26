@@ -59,3 +59,9 @@ button.btn.ui-btn{
   font-size: 12px;
   padding-top: 8px;
 }
+.announcement-header-time{
+  width: 60px;
+}
+.announcement-header-title{
+font-weight: bold;
+}
