@@ -5,8 +5,8 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
     <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi, user-scalable=0" />
     <link href="spec/lib/jquery-mobile-theme/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
     <link href="spec/lib/jquery-mobile/jquery.mobile.min.css" rel="stylesheet" type="text/css"/>
     <link href="spec/lib/jquery-mobile-theme/css/jquerymobile.nativedroid.css" rel="stylesheet" type="text/css"/>
@@ -69,7 +69,6 @@
                 </h3>
               </div>
               <div id="tdsb-favorites-content">
-
               </div>
             </div>
           </div>
@@ -124,18 +123,21 @@
             }
           });
         }
+//          url: 'js/announcements.json',
+        var myData = {page: 1, suscriptions: "0,1,2,3,4,5"}
         $.ajax({
-          url: 'js/announcements.json',
+          url: 'http://10.10.90.45:5000/announcements',
           type: 'get',
+          data: myData,
           dataType: 'json',
           error: function (data) {
           },
           success: function (data) {
             $.each(data.announcements, function (i, item) {
               var x = $(ann).clone();
-              console.log(x);
               x.find('.announcement-header-title').html(item.announcement_title)
-              x.find('.announcement-header-time').html(item.announcement_date);
+              var myDate = new Date(1000 * item.announcement_date)
+              x.find('.announcement-header-time').html(myDate.getDate() + '/' + myDate.getMonth() + " | " + myDate.getHours() + ':' + myDate.getMinutes());
               x.find('.announcement-content').html(item.announcement_content);
               x.find('.announcement-read-more').on('click', function () {
                 changePage();
@@ -157,14 +159,17 @@
 
 
 
+//          url: 'js/feeds.json',
       function getFeedsTitles() {
         $.ajax({
-          url: 'js/feeds.json',
+          url: 'http://10.10.90.45:5000/settings',
           type: 'get',
           dataType: 'json',
           error: function (data) {
+            console.log(data);
           },
           success: function (data) {
+            console.log(data);
             $.each(data.creators, function (i, item) {
               $('#tdsb-suscription-list').append('<li data-icon="false"><a href="#" data-id="' + item.id + '"  class="ui-btn">' + item.name + '</a></li>')
             });
