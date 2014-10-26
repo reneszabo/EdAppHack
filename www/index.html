@@ -73,14 +73,31 @@
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
     </div>
 
     <div id="read-more" data-role="page"  data-theme="" >
-      <a href="#homepage">back</a>
+      <div class="tdsb-navbar">
+        <h3 class="tdsb-navbar-brand">
+          Volleyball Won Again
+        </h3> 
+      </div>
+      <div class="inset">
+        <img style="width: 100%;" src="img/volleyball_wins.jpg" alt=""/>
+        <p>
+          A team can touch the ball three times on its side of the net. The usual pattern is a dig (an underarm pass made with the forearms), a set (an overhead pass made with the hands) and a spike (the overhead attacking shot). The ball is served into play. Teams can also try to block the opponent's spike as it crosses the net. A block into your own court counts as one of your three touches in beach volleyball, but not in volleyball. </p>
+        <p>
+          Power and height have become vital components of international teams, but the ability of teams and coaches to devise new strategies, tactics and skills has been crucial for continued success.
+        </p>
+        <p>
+          There are six players on court in a volleyball team, who each must rotate one position clockwise every time their team wins back service from the opposition. Only the three players at the net positions can jump and spike or block near the net. The backcourt players can only hit the ball over the net if they jump from behind the attack line, also known as the three-metre line, which separates the front and back part of the court.
+        </p>
+        <div class="announcement-footer clearfix">
+          <button class="announcement-calender btn btn-xs btn-default"> <span class="glyphicon glyphicon-calendar"></span> </button>
+        </div>
+      </div>
     </div>
 
 
@@ -126,7 +143,11 @@
               if (item.announcement_calendar_event == 0) {
                 x.find('.announcement-calender').remove();
               }
-              $('#tdsb-daily-content').append(x);
+              if (item.announcement_creator == 0) {
+                $('#tdsb-daily-content').append(x);
+              } else {
+                $('#tdsb-favorites-content').append(x);
+              }
             });
             //do something with data              
           }

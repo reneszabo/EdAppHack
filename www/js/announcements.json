@@ -2,21 +2,30 @@
   "announcements": [
     {
       "announcement_calendar_event": 0,
-      "announcement_content": "Test content",
+      "announcement_content": "When winter storms hit, most students are eager for a snow day. How is the decision made to cancel buses and close schools?",
       "announcement_creator": 0,
       "announcement_date": 1414268621,
       "announcement_end_date": 1414268621,
       "announcement_location": "Here",
-      "announcement_title": "This is a test"
+      "announcement_title": "Snow day - No  School"
     },
     {
-      "announcement_calendar_event": 0,
-      "announcement_content": "Test content",
-      "announcement_creator": 0,
+      "announcement_calendar_event": 1,
+      "announcement_content": "The EdAppHack is taking place October 25th and October 26th. Interested students are to meet in the Library at lunch. All students are welcome.",
+      "announcement_creator": 1,
       "announcement_date": 1414268621,
       "announcement_end_date": 1414268621,
       "announcement_location": "Here",
-      "announcement_title": "This is a test"
+      "announcement_title": "#EdAppHack"
+    },
+    {
+      "announcement_calendar_event": 1,
+      "announcement_content": "Power and height have become vital components of international teams, but the ability of teams and coaches to devise new strategies, tactics and skills has been crucial for continued success.",
+      "announcement_creator": 1,
+      "announcement_date": 1414268621,
+      "announcement_end_date": 1414268621,
+      "announcement_location": "",
+      "announcement_title": "Volleyball Won Again"
     }
   ]
 }
