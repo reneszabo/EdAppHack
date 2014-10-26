@@ -1,0 +1,22 @@
+{
+  "announcements": [
+    {
+      "announcement_calendar_event": 0,
+      "announcement_content": "Test content",
+      "announcement_creator": 0,
+      "announcement_date": 1414268621,
+      "announcement_end_date": 1414268621,
+      "announcement_location": "Here",
+      "announcement_title": "This is a test"
+    },
+    {
+      "announcement_calendar_event": 0,
+      "announcement_content": "Test content",
+      "announcement_creator": 0,
+      "announcement_date": 1414268621,
+      "announcement_end_date": 1414268621,
+      "announcement_location": "Here",
+      "announcement_title": "This is a test"
+    }
+  ]
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="ui-mobile">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+
+    <link href="spec/lib/jquery-mobile-theme/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="spec/lib/jquery-mobile/jquery.mobile.min.css" rel="stylesheet" type="text/css"/>
+    <link href="spec/lib/jquery-mobile-theme/css/jquerymobile.nativedroid.css" rel="stylesheet" type="text/css"/>
+    <link href="spec/lib/jquery-mobile-theme/css/jquerymobile.nativedroid.light.css" rel="stylesheet" type="text/css"/>
+    <link href="spec/lib/jquery-mobile-theme/css/jquerymobile.nativedroid.color.green.css" rel="stylesheet" type="text/css"/>
+    <link href="spec/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+    <link href="css/index.css" rel="stylesheet" type="text/css"/>
+
+    <script src="spec/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script>
+      $(document).bind("mobileinit", function () {
+        $.mobile.defaultPageTransition = "slide";
+      });</script>
+    <script src="spec/lib/jquery-mobile/jquery.mobile.min.js" type="text/javascript"></script>
+    <script src="spec/lib/jquery-mobile-theme/js/nativedroid.script.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>SwitchOn</title>
+  </head>
+
+  <body class="ui-mobile-viewport ui-overlay-b" >
+    <!-- HEADER NAVBAR-->
+    <div id="tdsb-header">
+
+      <div   data-role="header" data-position="fixed" data-tap-toggle="false" data-theme="b" role="banner" class="ui-header ui-bar-b ui-header-fixed slidedown">
+        <h1 class="ui-title" role="heading" aria-level="1"><strong class="tdsb-logo">SwitchOn</strong></h1>
+        <a  href='#mypanel' data-ajax="false" class="ui-link ui-btn-right ui-btn ui-shadow ui-corner-all tdsb-header-button" data-role="button" role="button"><i class="fa fa-bars"></i></a>
+      </div> 
+    </div>
+
+    <div id="homepage" data-role="page"  data-theme="" >
+      <div data-role='panel' id='mypanel' data-theme='b' data-display="overlay" >
+        <div class="ui-panel-inner">
+          <ul id="tdsb-suscription-list" data-role="listview" class="ui-listview">
+            <li class="ui-li-static ui-body-inherit ui-first-child">Suscription</li>
+          </ul>
+        </div>
+      </div>
+      <div role="main" class="ui-content">
+        <div class="ui-panel-wrapper">
+
+
+          <div data-role="content" class="ui-content" role="main">   
+            <div id="tdsb-daily-container">
+              <div class="tdsb-navbar">
+                <h3 class="tdsb-navbar-brand">
+                  Daily Announcements 
+                </h3> 
+              </div>
+              <div id="tdsb-daily-content">
+
+
+              </div>
+            </div>
+
+
+            <div id="tdsb-favorites-container">
+              <div class="tdsb-navbar">
+                <h3 class="tdsb-navbar-brand">
+                  My Alerts
+                </h3>
+              </div>
+              <div id="tdsb-favorites-content">
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div id="read-more" data-role="page"  data-theme="" >
+      <a href="#homepage">back</a>
+    </div>
+
+
+    <script type="text/javascript">
+      var ann;
+      $('button[data-href]').on('click', function () {
+        changePage();
+      });
+      $(document).on('pageinit', function () {
+        console.log('On Page Load for the first time');
+      });
+      $(document).ready(function () {
+        console.log('On document ready');
+        getFeedsTitles();
+      });
+      function getAnnounsments() {
+        if (ann === undefined) {
+          $.ajax({
+            url: 'announcement.html',
+            type: 'get',
+            async: false,
+            success: function (data) {
+              ann = data;
+            }
+          });
+        }
+        $.ajax({
+          url: 'js/announcements.json',
+          type: 'get',
+          dataType: 'json',
+          error: function (data) {
+          },
+          success: function (data) {
+            $.each(data.announcements, function (i, item) {
+              var x = $(ann).clone();
+              console.log(x);
+              x.find('.announcement-header-title').html(item.announcement_title)
+              x.find('.announcement-header-time').html(item.announcement_date);
+              x.find('.announcement-content').html(item.announcement_content);
+              x.find('.announcement-read-more').on('click', function () {
+                changePage();
+              });
+              if (item.announcement_calendar_event == 0) {
+                x.find('.announcement-calender').remove();
+              }
+              $('#tdsb-daily-content').append(x);
+            });
+            //do something with data              
+          }
+        });
+      }
+
+
+
+
+      function getFeedsTitles() {
+        $.ajax({
+          url: 'js/feeds.json',
+          type: 'get',
+          dataType: 'json',
+          error: function (data) {
+          },
+          success: function (data) {
+            $.each(data.creators, function (i, item) {
+              $('#tdsb-suscription-list').append('<li data-icon="false"><a href="#" data-id="' + item.id + '"  class="ui-btn">' + item.name + '</a></li>')
+            });
+            //do something with data    
+            getAnnounsments();
+          }
+        });
+      }
+
+      function changePage() {
+        $.mobile.pageContainer.pagecontainer("change", "#read-more");
+      }
+
+    </script>
+
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+@import url(http://fonts.googleapis.com/css?family=Crete+Round);
+
+#tdsb-header{
+}
+#tdsb-header .ui-title{
+  margin-top: 0px;
+  margin-right: 55px;
+  margin-bottom: 7px;
+  margin-left: 15px;
+}
+#tdsb-header .tdsb-logo{
+  color: #0D7F11;
+  font-size: 25px;
+  font-family: 'Crete Round', serif;
+}
+#tdsb-header a.ui-link{
+  margin-right: 5px;
+  margin-top: -4px;
+}
+/* TDSB Navbar Seperator */
+.tdsb-navbar{ 
+  color: white ;
+  background: #0D7F11 ;
+}
+.tdsb-navbar-brand{
+  padding: 15px;
+  margin-top: 0px; 
+}
+.tdsb-header-button{
+
+}
+.ui-page{
+  margin-top: 45px;
+}
+
+.announcement{
+  margin-bottom: 20px;
+}
+.announcement .announcement-header{
+  margin-bottom: 16px;
+}
+.announcement  .announcement-header h3{
+  margin: 0;
+}
+
+.navbar-tdsb .navbar-brand{
+  color: white;
+
+}
+.navbar-white{
+  border-bottom: white;
+  background: white;
+}
+
+button.btn.ui-btn{
+  width: inherit !important;
+}
+.announcement-header .pull-right{
+  font-size: 12px;
+  padding-top: 8px;
+}

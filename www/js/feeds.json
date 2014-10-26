@@ -1,0 +1,28 @@
+{
+  "creators": [
+    {
+      "id": 0,
+      "name": "School Administration Alerts"
+    },
+    {
+      "id": 1,
+      "name": "Debate Team"
+    },
+    {
+      "id": 2,
+      "name": "Model United Nations"
+    },
+    {
+      "id": 3,
+      "name": "Music Council"
+    },
+    {
+      "id": 4,
+      "name": "Badminton"
+    },
+    {
+      "id": 5,
+      "name": "Cross Country"
+    }
+  ]
+}
